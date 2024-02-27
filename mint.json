@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Avalanche Docs",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -15,17 +15,46 @@
       "to": "#07C983"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
+  "feedback": {
+    "suggestEdit": true,
+    "raiseIssue": true,
+    "thumbsRating": true
+  },
+  "search": {
+    "prompt": "Find anything on Avalanche..."
+  },
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "type": "github",
+    "url": "https://github.com/ava-labs/avalanche-docs"
+  },
+  "primaryTab": {
+    "name": "Learn"
   },
   "tabs": [
+    {
+      "name": "Build",
+      "url": "build"
+    },
+    {
+      "name": "Subnets",
+      "url": "subnets"
+    },
+    {
+      "name": "Nodes",
+      "url": "nodes"
+    },
+    {
+      "name": "AWM & Teleporter",
+      "url": "teleporter"
+    },
+    {
+      "name": "Virtual Machines",
+      "url": "vm"
+    },
+    {
+      "name": "Tooling",
+      "url": "tooling"
+    },
     {
       "name": "API Reference",
       "url": "api-reference"
@@ -33,19 +62,19 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Avalanche Academy",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://academy.avax.network/"
     },
     {
       "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "icon": "telegram",
+      "url": "https://t.me/+KDajA4iToKY2ZjBk"
     },
     {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "Developers Blog",
+      "icon": "medium",
+      "url": "https://medium.com/@avaxdevelopers"
     }
   ],
   "navigation": [
