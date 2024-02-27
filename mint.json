@@ -2,17 +2,17 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Avalanche Docs",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/avalanche.svg",
+    "light": "/logo/avalanche.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#e84142",
+    "light": "#e84142",
+    "dark": "#e84142",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#FF0000",
+      "to": "#FF7878"
     }
   },
   "feedback": {
