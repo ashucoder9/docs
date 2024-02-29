@@ -45,7 +45,7 @@
     },
     {
       "name": "AWM & Teleporter",
-      "url": "teleporter"
+      "url": "cross-chain"
     },
     {
       "name": "Virtual Machines",
@@ -75,41 +75,117 @@
       "name": "Developers Blog",
       "icon": "medium",
       "url": "https://medium.com/@avaxdevelopers"
+    },
+    {
+      "name": "Avalanche Forum",
+      "icon": "stack-exchange",
+      "url": "https://forum.avax.network/"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Avalanche Protocol",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "learn/avalanche",
+        "learn/consensus",
+        {
+          "group": "Networks",
+          "icon": "chart-network",
+          "pages": [
+            "learn/mainnet",
+            "learn/testnet"
+          ]
+        },
+        "learn/token"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Virtual Machines",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets",
-        "Teleporter/deep-dive"
+          "vm/quick-links",
+          "vm/intro"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Avalanche CLI",
       "pages": [
-        "api-reference/introduction"
+          "tooling/cli/install",
+          {
+            "group": "CLI Commands",
+            "icon": "square-terminal",
+            "pages": [
+                "tooling/cli/primary",
+                "tooling/cli/subnet",
+                "tooling/cli/node",
+                "tooling/cli/network",
+                "tooling/cli/transaction",
+                "tooling/cli/key"
+            ]
+          }
+      ]
+    },
+    {
+      "group": "Rust VMs",
+      "pages": [
+          "vm/rust-vm/intro-avalanche-rs",
+          "vm/rust-vm/installing-vm"
+      ]
+    },
+    {
+      "group": "Decentralized Apps",
+      "pages": [
+          "build/overview",
+          "build/chain-settings"
+      ]
+    },
+    {
+      "group": "Cross-Chain Functionality",
+      "pages": [
+          "cross-chain/quick-links"
+      ]
+    },
+    {
+      "group": "Avalanche Warp Messaging",
+      "icon": "code",
+      "pages": [
+          "cross-chain/awm/overview",
+          "cross-chain/awm/deep-dive",
+          "cross-chain/awm/evm-integration"
+      ]
+    },
+    {
+      "group": "Teleporter",
+      "pages": [
+          "cross-chain/Teleporter/overview",
+          "cross-chain/Teleporter/deep-dive",
+          "cross-chain/Teleporter/examples"
+      ]
+    },
+    {
+      "group": "Smart Contract Development",
+      "pages": [
+          "build/get-funds-faucet",
+          "build/remix-deploy",
+          {
+            "group": "Verify Contracts",
+            "icon": "square-terminal",
+            "pages": [
+                "build/verify-hardhat"
+            ]
+          }
+      ]
+    },
+    {
+      "group": "Platform Chain",
+      "pages": [
+          "api-reference/p-chain-api",
+          "api-reference/p-chain-transaction"
       ]
     },
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+          "api-reference/eth_getBalance"
       ]
     }
   ],

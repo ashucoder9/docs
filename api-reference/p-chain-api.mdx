@@ -1,0 +1,108 @@
+---
+title: P-Chain API
+description: This page is an overview of the P-Chain API associated with AvalancheGo.
+icon: code
+---
+
+This API allows clients to interact with the
+[P-Chain](/learn/avalanche/avalanche-platform.md#p-chain), which
+maintains Avalanche’s [validator](/nodes/validate/how-to-stake#validators) set and handles
+blockchain creation.
+
+## Methods
+
+### `platform.addDelegator`
+
+<Warning>
+
+Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+
+</Warning>
+
+<Warning>Not recommended for use on Mainnet. See warning notice in [Keystore API](/reference/avalanchego/keystore-api.md).</Warning>
+
+Add a delegator to the Primary Network.
+
+A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf. The
+delegatee has an increased probability of being sampled by other validators (weight) in proportion
+to the stake delegated to them.
+
+The delegatee charges a fee to the delegator; the former receives a percentage of the delegator’s
+validation reward (if any.) A transaction that delegates stake has no fee.
+
+The delegation period must be a subset of the period that the delegatee validates the Primary
+Network.
+
+<Info>Once you issue the transaction to add a node as a delegator, there is no way to change the
+parameters. **You can’t remove a stake early or change the stake amount, node ID, or reward
+address.** Please make sure you’re using the correct values. If you’re not sure, please reach out to
+us on [Discord.](https://chat.avalabs.org/)</Info>
+
+**Signature:**
+
+```sh
+platform.addDelegator(
+    {
+        nodeID: string,
+        startTime: int,
+        endTime: int,
+        stakeAmount: int,
+        rewardAddress: string,
+        from: []string, // optional
+        changeAddr: string, // optional
+        username: string,
+        password: string
+    }
+) ->
+{
+    txID: string,
+    changeAddr: string
+}
+```
+
+- `nodeID` is the ID of the node to delegate to.
+- `startTime` is the Unix time when the delegator starts delegating.
+- `endTime` is the Unix time when the delegator stops delegating (and staked AVAX is returned).
+- `stakeAmount` is the amount of nAVAX the delegator is staking.
+- `rewardAddress` is the address the validator reward goes to, if there is one.
+- `from` are the addresses that you want to use for this operation. If omitted, uses any of your
+  addresses as needed.
+- `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the
+  addresses controlled by the user.
+- `username` is the user that pays the transaction fee.
+- `password` is `username`‘s password.
+- `txID` is the transaction ID
+
+**Example Call:**
+
+```sh
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.addDelegator",
+    "params": {
+        "nodeID":"NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
+        "rewardAddress":"P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+        "startTime":1594102400,
+        "endTime":1604102400,
+        "stakeAmount":100000,
+        "from": ["P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
+        "username":"myUsername",
+        "password":"myPassword"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
+```
+
+**Example Response:**
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "txID": "6pB3MtHUNogeHapZqMUBmx6N38ii3LzytVDrXuMovwKQFTZLs",
+    "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
+  },
+  "id": 1
+}
+```

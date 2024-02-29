@@ -1,0 +1,318 @@
+---
+title: Node
+---
+
+The `node` command suite provides a collection of tools for creating and maintaining 
+validators on the Avalanche Network.
+
+To get started, use the node create command wizard to walk through the
+configuration to make your node a primary validator on Avalanche public network. You can use the 
+rest of the commands to maintain your node and make your node a Subnet Validator.
+
+## Create
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node create` command sets up a validator on a cloud server of your choice. 
+The validator will be validating the Avalanche Primary Network and Subnet 
+of your choice.
+
+By default, the command runs an interactive wizard. It 
+walks you through all the steps you need to set up a validator.
+Validators can be deployed in multiple regions/zones simultaneously.
+
+Once this command is run, you will have to wait for the validator
+to finish bootstrapping on the primary network before running further
+commands on it, for example validating a Subnet. You can check the bootstrapping
+status by running `avalanche node status`. 
+
+The created node will be part of group of validators called `<clusterName>`
+and users can call node commands with `<clusterName>` so that the command
+will apply to all nodes in the cluster.
+
+<CodeGroup>
+```shell Usage
+avalanche node create [clusterName] [flags]
+```
+
+```shell Flags
+      --alternative-key-pair-name string         key pair name to use if default one generates conflicts
+      --authorize-access                         authorize CLI to create cloud resources
+      --avalanchego-version-from-subnet string   install latest avalanchego version, that is compatible with the given subnet, on node/s
+      --aws                                      create node/s in AWS cloud
+      --aws-profile string                       aws profile to use (default "default")
+      --devnet                                   create node/s into a new Devnet
+      --fuji                                     create node/s in Fuji Network
+      --gcp                                      create node/s in GCP cloud
+      --gcp-credentials string                   use given GCP credentials
+      --gcp-project string                       use given GCP project
+  -h, --help                                     help for create
+      --latest-avalanchego-version               install latest avalanchego version on node/s
+      --node-type string                         cloud instance type. Use 'default' to use recommended default instance type
+      --num-nodes ints                           number of nodes to create per region(s). Use comma to separate multiple numbers for each region in the same order as --region flag
+      --region strings                           create node(s) in given region(s). Use comma to separate multiple regions
+      --ssh-identity string                      use given ssh identity
+      --use-ssh-agent                            use ssh agent for ssh
+      --use-static-ip                            attach static Public IP on cloud servers (default true)
+```
+</CodeGroup>
+
+## Devnet
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node devnet` command suite provides a collection of commands related to devnets.
+You can check the updated status by calling avalanche node status `<clusterName>`
+
+### Devnet Deploy
+
+The `node devnet deploy` command deploys a Subnet into a devnet cluster, creating Subnet and blockchain TXs for it.
+It saves the deploy info both locally and remotely.
+
+<CodeGroup>
+```shell Usage
+avalanche node devnet deploy [clusterName] [subnetName] [flags]
+```
+
+```shell Flags
+-h, --help   help for list
+```
+</CodeGroup>
+
+### Devnet Wiz
+
+The `node devnet wiz` command creates a devnet and deploys, sync and validate a Subnet into it. It creates the Subnet if so needed.
+
+<CodeGroup>
+```shell Usage
+avalanche node devnet wiz [clusterName] [subnetName] [flags]
+```
+
+```shell Flags
+    --alternative-key-pair-name string   key pair name to use if default one generates conflicts
+    --authorize-access                   authorize CLI to create cloud resources
+    --aws                                create node/s in AWS cloud
+    --aws-profile string                 aws profile to use (default "default")
+    --chain-config string                path to the chain configuration for subnet
+    --custom-subnet                      use a custom VM as the subnet virtual machine
+    --custom-vm-branch string            custom vm branch
+    --custom-vm-build-script string      custom vm build-script
+    --custom-vm-repo-url string          custom vm repository url
+    --default-validator-params           use default weight/start/duration params for subnet validator
+    --evm-subnet                         use Subnet-EVM as the subnet virtual machine
+    --evm-version string                 version of Subnet-Evm to use
+    --force-subnet-create                overwrite the existing subnet configuration if one exists
+    --gcp                                create node/s in GCP cloud
+    --gcp-credentials string             use given GCP credentials
+    --gcp-project string                 use given GCP project
+-h, --help                               help for wiz
+    --latest-evm-version                 use latest Subnet-Evm version
+    --node-config string                 path to avalanchego node configuration for subnet
+    --num-nodes int                      number of nodes to create
+    --region string                      create node/s in given region
+    --ssh-identity string                use given ssh identity
+    --subnet-config string               path to the subnet configuration for subnet
+    --subnet-genesis string              file path of the subnet genesis
+    --use-ssh-agent                      use ssh agent for ssh
+    --use-static-ip                      attach static Public IP on cloud servers (default true)
+```
+</CodeGroup>
+
+## List
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node list` command lists all clusters together with their nodes.
+
+<CodeGroup>
+```shell Usage
+avalanche node list [flags]
+```
+
+```shell Flags
+-h, --help   help for list
+```
+</CodeGroup>
+
+## SSH
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node ssh` command execute a given command using ssh on all nodes in the cluster.
+If no command is given, just prints the ssh command line to be used to connect to each node.
+
+<CodeGroup>
+```shell Usage
+avalanche node ssh [clusterName] [flags]
+```
+
+```shell Flags
+-h, --help            help for status
+```
+</CodeGroup>
+
+## Status
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node status` command gets the bootstrap status of all nodes in a cluster 
+with the Primary Network.
+If no cluster is given, defaults to node list behaviour.
+
+To get the bootstrap status of a node with a Subnet, use the `--subnet` flag.
+
+<CodeGroup>
+```shell Usage
+avalanche node status [clusterName] [flags]
+```
+
+```shell Flags
+-h, --help            help for status
+      --subnet string   specify the subnet the node is syncing with
+```
+</CodeGroup>
+
+## Stop
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node stop` command stops a running node in cloud server. Note that a stopped node may still incur cloud server storage fees.
+
+<CodeGroup>
+```shell Usage
+avalanche node stop [clusterName] [flags]
+```
+
+```shell Flags
+    --authorize-access   authorize CLI to release cloud resources
+    --authorize-remove   authorize CLI to remove all local files related to cloud nodes
+-h, --help   help for stop
+```
+</CodeGroup>
+
+## Sync
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node sync` command enables all nodes in a cluster to be bootstrapped to a Subnet. 
+You can check the Subnet bootstrap status by calling avalanche `node status <clusterName> --subnet <subnetName>`
+
+<CodeGroup>
+```shell Usage
+avalanche node sync [clusterName] [subnetName] [flags]
+```
+
+```shell Flags
+-h, --help   help for sync
+```
+</CodeGroup>
+
+## Update
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node update` command suite provides a collection of commands for nodes to update
+their AvalancheGo version or VM version/config.
+You can check the status after update by calling `avalanche node status`
+
+### Node Update Subnet
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node update subnet` command updates all nodes in a cluster with latest Subnet configuration and
+You can check the updated Subnet bootstrap status by calling avalanche
+`node status <clusterName> --subnet <subnetName>`
+
+<CodeGroup>
+```shell Usage
+avalanche node update subnet [clusterName] [subnetName] [flags]
+```
+
+```shell Flags
+-h, --help   help for subnet
+```
+</CodeGroup>
+
+## Validate
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node validate` command suite provides a collection of commands for nodes to join
+the Primary Network and Subnets as validators.
+If any of the commands is run before the nodes are bootstrapped on the Primary Network, the command 
+will fail. You can check the bootstrap status by calling `avalanche node status <clusterName>`.
+
+## Validate Primary
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node validate primary` command enables all nodes in a cluster to be validators of Primary
+Network.
+
+<CodeGroup>
+```shell Usage
+avalanche node validate primary [clusterName] [flags]
+```
+
+```shell Flags
+-f, --fuji testnet              set up validator in fuji (alias to testnet
+-h, --help                      help for primary
+-k, --key string                select the key to use [fuji only]
+-g, --ledger                    use ledger instead of key (always true on mainnet, defaults to false on fuji)
+    --ledger-addrs strings      use the given ledger addresses
+-m, --mainnet                   set up validator in mainnet
+    --stake-amount uint         how many AVAX to stake in the validator
+    --staking-period duration   how long validator validates for after start time
+-t, --testnet fuji              set up validator in testnet (alias to fuji)
+```
+</CodeGroup>
+
+## Validate Subnet
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node validate subnet` command enables all nodes in a cluster to be validators of a Subnet.
+If the command is run before the nodes are Primary Network validators, the command will first
+make the nodes Primary Network validators before making them Subnet validators. 
+If The command is run before the nodes are bootstrapped on the Primary Network, the command
+will fail. 
+You can check the bootstrap status by calling `avalanche node status <clusterName>`.
+If The command is run before the nodes are synced to the Subnet, the command will fail.
+You can check the Subnet sync status by calling `avalanche node status <clusterName> --subnet <subnetName>`.
+
+<CodeGroup>
+```shell Usage
+avalanche node validate subnet [clusterName] [subnetName] [flags]
+```
+
+```shell Flags
+    --default-validator-params   use default weight/start/duration params for subnet validator
+-d, --devnet                     set up validator in devnet
+    --endpoint string            use the given endpoint for network operations
+-e, --ewoq                       use ewoq key [fuji/devnet only]
+-f, --fuji testnet               set up validator in fuji (alias to testnet
+-h, --help                       help for subnet
+-k, --key string                 select the key to use [fuji/devnet only]
+-g, --ledger                     use ledger instead of key (always true on mainnet, defaults to false on fuji/devnet)
+    --ledger-addrs strings       use the given ledger addresses
+-m, --mainnet                    set up validator in mainnet
+    --stake-amount uint          how many AVAX to stake in the validator
+    --staking-period duration    how long validator validates for after start time
+    --start-time string          UTC start time when this validator starts validating, in 'YYYY-MM-DD HH:MM:SS' format
+-t, --testnet fuji               set up validator in testnet (alias to fuji)
+```
+</CodeGroup>
+
+## Whitelist
+
+<Caution>This command is currently in experimental mode.</Caution>
+
+The `node whitelist` command whitelists IP address for access to open AvalancheGo ports for specific cluster.
+Nodes created by `Avalanche-CLI` are protected by Cloud Security Group and only defined IP addresses 
+are allowed to access. User IP is whitelisted automatically when cluster is created, but this command can be used in 
+case of IP address changes or granting access to additional IPs. This command detects user current IP address automatically
+if no IP address is provided.
+
+```shell Usage
+avalanche node whitelist <clusterName> [IP]
+```

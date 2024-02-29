@@ -1,0 +1,85 @@
+---
+title: Network
+---
+
+The `network` command suite provides a collection of tools for managing local Subnet
+deployments.
+
+When you deploy a Subnet locally, it runs on a local, multi-node Avalanche network. The
+`subnet deploy` command starts this network in the background. This command suite allows you
+to shutdown, restart, and clear that network.
+
+This network currently supports multiple, concurrently deployed Subnets.
+
+## Clean
+
+The `network clean` command shuts down your local, multi-node network. All deployed Subnets
+shutdown and delete their state. You can restart the network by deploying a new Subnet
+configuration.
+
+<CodeGroup>
+```shell Usage
+avalanche network clean [flags]
+```
+
+```shell Flags
+    --hard   Also clean downloaded avalanchego and plugin binaries
+-h, --help   help for clean
+```
+</CodeGroup>
+
+## Start
+
+The `network start` command starts a local, multi-node Avalanche network on your machine.
+
+By default, the command loads the default snapshot. If you provide the `--snapshot-name`
+flag, the network loads that snapshot instead. The command fails if the local network is
+already running.
+
+<CodeGroup>
+```shell Usage
+avalanche network start [flags]
+```
+
+```shell Flags
+    --avalanchego-version string   use this version of avalanchego (ex: v1.17.12) (default "latest")
+-h, --help                         help for start
+    --snapshot-name string         name of snapshot to use to start the network from (default "default-1654102509")
+```
+</CodeGroup>
+
+## Status
+
+The `network status` command prints whether or not a local Avalanche network is running and
+some basic stats about the network.
+
+<CodeGroup>
+```shell Usage
+avalanche network status [flags]
+```
+
+```shell Flags
+-h, --help   help for status
+```
+</CodeGroup>
+
+## Stop
+
+The `network stop` command shuts down your local, multi-node network.
+
+All deployed Subnets shutdown gracefully and save their state. If you provide the
+`--snapshot-name` flag, the network saves its state under this named snapshot. You can
+reload this snapshot with `network start --snapshot-name <snapshotName>`. Otherwise, the
+network saves to the default snapshot, overwriting any existing state. You can reload the
+default snapshot with `network start`.
+
+<CodeGroup>
+```shell Usage
+avalanche network stop [flags]
+```
+
+```shell Flags
+-h, --help                   help for stop
+    --snapshot-name string   name of snapshot to use to save network state into (default "default-1654102509")
+```
+</CodeGroup>

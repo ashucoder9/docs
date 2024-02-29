@@ -1,0 +1,85 @@
+---
+title: Avalanche Consensus
+sidebarTitle: Consensus
+icon: arrows-to-dot
+---
+
+Consensus is the task of getting a group of computers (a.k.a. nodes) to come to an agreement on a decision.
+In blockchain, this means that all the participants in a network have to agree on the changes made to
+the shared ledger. This agreement is reached through a specific process, a consensus protocol,
+that ensures that everyone sees the same information and that the information is accurate and trustworthy.
+
+**Avalanche Consensus** is a consensus protocol that is scalable, robust, and decentralized. It
+combines features of both classical and Nakamoto consensus mechanisms to achieve high throughput,
+fast finality, and
+energy efficiency. For the whitepaper, see [here](https://www.avalabs.org/whitepapers).
+
+## Conceptual Overview
+
+Consensus protocols in the Avalanche family operate through repeated sub-sampled voting. When a
+node is determining whether a
+[transaction](http://support.avalabs.org/en/articles/4587384-what-is-a-transaction) should be
+accepted, it asks a small, random subset of
+[validator nodes](http://support.avalabs.org/en/articles/4064704-what-is-a-blockchain-validator)
+for their preference. Each queried validator replies with the transaction that it prefers, or thinks
+should be accepted.
+
+<Note>
+Consensus will never include a transaction that is determined to be **invalid**. For example, if you
+were to submit a transaction to send 100 AVAX to a friend, but your wallet only has 2 AVAX, this transaction
+is considered **invalid** and will not participate in consensus.
+</Note>
+
+If a sufficient majority of the validators sampled reply with the same preferred
+transaction, this becomes the preferred choice of the validator that inquired.
+
+In the future, this node will reply with the transaction preferred by the majority.
+
+The node repeats this sampling process until the validators
+queried reply with the same answer for a sufficient number of consecutive rounds.
+
+<AccordionGroup>
+  <Accordion title="Consensus Parameters">
+    - The number of validators required to be considered a "sufficient majority" is referred to as "α" (_alpha_).
+    - The number of consecutive rounds required to reach consensus, a.k.a. the "Confidence Threshold,"
+    is referred to as "β" (_beta_).
+    - Both α and β are configurable.
+  </Accordion>
+</AccordionGroup>
+
+When a transaction has no conflicts, finalization happens very quickly. When
+conflicts exist, honest validators quickly cluster around conflicting transactions, entering a
+positive feedback loop until all correct validators prefer that transaction. This leads to the
+acceptance of non-conflicting transactions and the rejection of conflicting transactions.
+
+Avalanche Consensus guarantees that if any honest validator accepts a transaction,
+all honest validators will come to the same conclusion.
+
+<Tip>For a great visualization, check out [this demo](https://tedyin.com/archive/snow-bft-demo/#/snow).</Tip>
+
+## Deep Dive Into Avalanche Consensus
+
+<iframe src="https://www.youtube.com/embed/ZUF9sIu-D_k"
+        width="100%"
+        height="480px"
+        title="Deep Dive on the Avalanche Protocol"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+</iframe>
+
+### Intuition
+
+First, let's develop some intuition about the protocol. Imagine a room full of people trying to
+agree on what to get for lunch. Suppose it's a binary choice between pizza and barbecue. Some people
+might initially prefer pizza while others initially prefer barbecue. Ultimately, though, everyone's
+goal is to achieve **consensus**.
+
+Everyone asks a random subset of the people in the room what their lunch preference is. If more than
+half say pizza, the person thinks, "OK, looks like things are leaning toward pizza. I prefer pizza
+now." That is, they adopt the _preference_ of the majority. Similarly, if a majority say barbecue,
+the person adopts barbecue as their preference.
+
+Everyone repeats this process. Each round, more and more people have the same preference. This is
+because the more people that prefer an option, the more likely someone is to receive a majority
+reply and adopt that option as their preference. After enough rounds, they reach consensus and
+decide on one option, which everyone prefers.
