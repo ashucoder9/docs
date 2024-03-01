@@ -190,8 +190,10 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "discord": "https://chat.avax.network/",
+    "twitter": "https://twitter.com/AvaxDevelopers",
+    "youtube": "https://www.youtube.com/@Avalancheavax",
+    "github": "https://github.com/ava-labs",
+    "linkedin": "https://www.linkedin.com/company/avalancheavax"
   }
 }
