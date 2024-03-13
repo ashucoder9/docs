@@ -187,6 +187,150 @@
       "pages": [
           "api-reference/eth_getBalance"
       ]
+    },
+    {
+      "group": "Health Check",
+      "pages": [
+        "api-reference/health-check/get-the-health-of-the-service"
+      ]
+    },
+    {
+      "group": "NFTs",
+      "pages": [
+        "api-reference/nfts/reindex-nft-metadata",
+        "api-reference/nfts/list-tokens",
+        "api-reference/nfts/get-token-details"
+      ]
+    },
+    {
+      "group": "Operations",
+      "pages": [
+        "api-reference/operations/get-operation",
+        "api-reference/operations/create-transaction-export-operation"
+      ]
+    },
+    {
+      "group": "Primary Network Transactions",
+      "pages": [
+        "api-reference/primary-network-transactions/get-transaction",
+        "api-reference/primary-network-transactions/list-latest-transactions",
+        "api-reference/primary-network-transactions/list-staking-transactions",
+        "api-reference/primary-network-transactions/list-asset-transactions"
+      ]
+    },
+    {
+      "group": "Primary Network Rewards",
+      "pages": [
+        "api-reference/primary-network-rewards/list-pending-rewards",
+        "api-reference/primary-network-rewards/list-historical-rewards"
+      ]
+    },
+    {
+      "group": "Primary Network UTXOs",
+      "pages": [
+        "api-reference/primary-network-utxos/list-utxos"
+      ]
+    },
+    {
+      "group": "Primary Network Balances",
+      "pages": [
+        "api-reference/primary-network-balances/get-balances"
+      ]
+    },
+    {
+      "group": "Primary Network Blocks",
+      "pages": [
+        "api-reference/primary-network-blocks/get-block",
+        "api-reference/primary-network-blocks/list-blocks-proposed-by-node",
+        "api-reference/primary-network-blocks/list-latest-blocks"
+      ]
+    },
+    {
+      "group": "Primary Network Vertices",
+      "pages": [
+        "api-reference/primary-network-vertices/list-vertices",
+        "api-reference/primary-network-vertices/get-vertex",
+        "api-reference/primary-network-vertices/list-vertices-by-height"
+      ]
+    },
+    {
+      "group": "Primary Network",
+      "pages": [
+        "api-reference/primary-network/get-asset-details",
+        "api-reference/primary-network/get-chain-interactions-for-addresses",
+        "api-reference/primary-network/get-network-details",
+        "api-reference/primary-network/list-blockchains",
+        "api-reference/primary-network/list-subnets",
+        "api-reference/primary-network/list-validators",
+        "api-reference/primary-network/get-single-validator-details",
+        "api-reference/primary-network/list-delegators"
+      ]
+    },
+    {
+      "group": "Webhooks",
+      "pages": [
+        "api-reference/webhooks/list-webhooks",
+        "api-reference/webhooks/register-a-webhook",
+        "api-reference/webhooks/get-a-webhook-by-id",
+        "api-reference/webhooks/deactivate-a-webhook",
+        "api-reference/webhooks/update-a-webhook",
+        "api-reference/webhooks/generate-a-shared-secret",
+        "api-reference/webhooks/get-a-shared-secret"
+      ]
+    },
+    {
+      "group": "Teleporter",
+      "pages": [
+        "api-reference/teleporter/get-a-teleporter-message",
+        "api-reference/teleporter/list-teleporter-messages"
+      ]
+    },
+    {
+      "group": "EVM Balances",
+      "pages": [
+        "api-reference/evm-balances/get-native-token-balance",
+        "api-reference/evm-balances/list-erc-20-balances",
+        "api-reference/evm-balances/list-erc-721-balances",
+        "api-reference/evm-balances/list-erc-1155-balances",
+        "api-reference/evm-balances/list-collectible-erc-721erc-1155-balances"
+      ]
+    },
+    {
+      "group": "EVM Blocks",
+      "pages": [
+        "api-reference/evm-blocks/list-latest-blocks",
+        "api-reference/evm-blocks/get-block"
+      ]
+    },
+    {
+      "group": "EVM Transactions",
+      "pages": [
+        "api-reference/evm-transactions/get-deployment-transaction",
+        "api-reference/evm-transactions/list-deployed-contracts",
+        "api-reference/evm-transactions/list-erc-transfers",
+        "api-reference/evm-transactions/list-transactions",
+        "api-reference/evm-transactions/list-native-transactions",
+        "api-reference/evm-transactions/list-erc-20-transfers",
+        "api-reference/evm-transactions/list-erc-721-transfers",
+        "api-reference/evm-transactions/list-erc-1155-transfers",
+        "api-reference/evm-transactions/list-internal-transactions",
+        "api-reference/evm-transactions/get-transaction",
+        "api-reference/evm-transactions/list-transactions-for-a-block",
+        "api-reference/evm-transactions/list-latest-transactions"
+      ]
+    },
+    {
+      "group": "EVM Contracts",
+      "pages": [
+        "api-reference/evm-contracts/get-contract-metadata"
+      ]
+    },
+    {
+      "group": "EVM Chains",
+      "pages": [
+        "api-reference/evm-chains/list-chains",
+        "api-reference/evm-chains/get-chain-information"
+      ]
     }
   ],
   "footerSocials": {
